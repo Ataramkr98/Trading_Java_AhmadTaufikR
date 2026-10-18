@@ -1,0 +1,10 @@
+package com.ahmadtrportofolio.pulse.trading;
+
+import java.util.List;
+import java.util.UUID;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderRepository extends JpaRepository<Order, UUID> {
+    List<Order> findByAccountIdOrderByPlacedAtDesc(UUID accountId);
+    List<Order> findByAccountIdAndStatusOrderByPlacedAtDesc(UUID accountId, String status);
+}
